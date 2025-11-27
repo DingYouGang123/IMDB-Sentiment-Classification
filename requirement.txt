@@ -47,6 +47,8 @@ nvidia-ml-py==13.580.82
 nvidia-nccl-cu12==2.27.3
 nvidia-nvjitlink-cu12==12.8.93
 nvidia-nvtx-cu12==12.8.90
+optuna==3.6.1
+optuna-integration[pytorch-lightning]==3.6.1
 packaging==25.0
 pandas==2.3.3
 pillow==11.0.0
