@@ -62,15 +62,30 @@ python predict.py --model_path ./results/deberta-v3-base --comment "This movie i
 ❤️  预测情感：正面
 ```
 
+## 🎯 超参数调优
+针对RoBERTa模型（性能与效率均衡）进行超参数自动搜索，优化核心指标为准确率。
+
+### 调优功能
+- 搜索超参数：学习率（1e-5~1e-4）、批量大小（4/8/16）、权重衰减（0.01~0.2）、预热比例（0.05~0.2）
+- 自动剪枝：性能不佳的实验提前终止，节省计算资源
+- 结果保存：自动输出最优超参数组合及测试集最终性能
+
+### 运行调优
+```bash
+# 启动超参数搜索（共10轮，可修改num_trials调整）
+python src/tune_hyperparameters.py
+```
+
 ## 📂 项目结构
 ```plaintext
 IMDB-Sentiment-Classification/
 ├── src/
-│   └── train_imdb.py  # 核心训练脚本（数据处理+模型训练+评估）
-├── predict.py         # 单条评论预测脚本
-├── requirements.txt   # 依赖包清单
-├── README.md          # 项目说明文档
-└── results/           # 自动生成：训练结果、可视化图表、模型文件
+│   └── train_imdb.py            # 核心训练脚本（数据处理+模型训练+评估）
+│   └── tune_hyperparameters.py  # 调参脚本
+├── predict.py                   # 单条评论预测脚本
+├── requirements.txt             # 依赖包清单
+├── README.md                    # 项目说明文档
+└── results/                     # 自动生成：训练结果、可视化图表、模型文件
 ```
 
 ## 🔧 核心功能说明
